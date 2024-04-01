@@ -4,12 +4,11 @@
     "slug": "SportApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/NarxozSport.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#CC0836"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,8 +18,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/NarxozSport.png",
+        "backgroundColor": "#CC0836"
       }
     },
     "web": {
