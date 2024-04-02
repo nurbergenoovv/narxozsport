@@ -1,6 +1,6 @@
 const data = [
 	{
-		date: '01.01.2024',
+		date: 'Понеделник',
 		schedule: {
 			time: '12:00 13:15',
 			name: 'Power lifting schedule',
@@ -10,7 +10,7 @@ const data = [
 		},
 	},
 	{
-		date: '01.01.2024',
+		date: 'Вторник',
 		schedule: {
 			time: '12:00 13:15',
 			name: 'Power lifting schedule',
@@ -20,7 +20,7 @@ const data = [
 		},
 	},
 	{
-		date: '01.01.2024',
+		date: 'Среда',
 		schedule: {
 			time: '12:00 13:15',
 			name: 'Power lifting schedule',
@@ -30,7 +30,7 @@ const data = [
 		},
 	},
 	{
-		date: '01.01.2024',
+		date: 'Четверг',
 		schedule: {
 			time: '12:00 13:15',
 			name: 'Power lifting schedule',
@@ -40,7 +40,7 @@ const data = [
 		},
 	},
 	{
-		date: '01.01.2024',
+		date: 'Пятница',
 		schedule: {
 			time: '12:00 13:15',
 			name: 'Power lifting schedule',
@@ -50,7 +50,7 @@ const data = [
 		},
 	},
 	{
-		date: '01.01.2024',
+		date: 'Суббота',
 		schedule: {
 			time: '12:00 13:15',
 			name: 'Power lifting schedule',

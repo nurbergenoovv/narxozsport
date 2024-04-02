@@ -15,11 +15,11 @@ export default function ProfileUserCard({ data }) {
 				</Text>
 			</View>
 			<View className="mt-4" style={{gap:10}}> 
-				<LabelAndText label={'Верификация'} text={data.verified ? "Пройдено" : "Не пройдено"} />
-				<LabelAndText label={'День рождения'} text={data.birthdate} />
-				<LabelAndText label={'Пол'} text={data.gender} />
-				<LabelAndText label={'Email'} text={data.email} />
-				<LabelAndText label={'Номер телефона'} text={data.phone} />
+				<LabelAndText label={'Верификация'} text={data.verified ? "Пройдено" : "Не пройдено"} gap={-4}/>
+				<LabelAndText label={'День рождения'} text={data.birthdate} gap={-4}/>
+				<LabelAndText label={'Пол'} text={data.gender} gap={-4}/>
+				<LabelAndText label={'Email'} text={data.email} gap={-4}/>
+				<LabelAndText label={'Номер телефона'} text={data.phone} gap={-4}/>
 			</View>
 		</View>
 	)

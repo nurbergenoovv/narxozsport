@@ -14,7 +14,7 @@ export default function SSplash() {
 		>
 			<Image
 				source={require('../../../assets/NarxozSport.png')}
-				style={{ width: 200, height: 200 }}
+				style={{ height: '40%', aspectRatio: '4/4',}}
 			/>
 			<Text style={{ color: 'white', fontWeight: 'bold', fontSize: 14, position:'absolute', bottom:40}}>
 				@nurbergenovv__

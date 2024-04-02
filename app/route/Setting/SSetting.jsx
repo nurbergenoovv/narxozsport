@@ -13,7 +13,7 @@ export default function SSetting({ navigation }) {
 		setSelectedOption(option)
 	}
 	return (
-		<SafeAreaView className='flex-1 items-center'>
+		<SafeAreaView className='flex-1 items-center pt-2'>
 			<HeaderGoBack navigation={navigation} pageName={'Настройки'} />
 			<View className='px-5 w-full mt-5' style={{ gap: 15 }}>
 				<Dropdown options={options} onSelect={handleSelect} />

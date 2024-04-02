@@ -11,7 +11,6 @@ export default function DefaultWhiteButton({onPress, text}) {
 				name={'chevron-right'}
 				size={24}
 				color={colors.primary}
-				style={styles.pencil}
 			/>
 		</TouchableOpacity>
 	)

@@ -7,18 +7,20 @@ import data from './data'
 
 export default function SSchedules({ navigation }) {
 	return (
-		<SafeAreaView>
+		<SafeAreaView className="pt-2">
 			<HeaderGoBack
 				pageName={'Расписания спортивной секций'}
 				navigation={navigation}
 			/>
-			<ScrollView className='w-full p-5' style={{height:"98%"}}>
-				{data.map((item, index) => (
-					<View key={index} style={{gap:5}}>
-						<TextSmallGray text={item.date} />
-						<ScheduleCard data={item}/>
-					</View>
-				))}
+			<ScrollView className='w-full mt-2 px-5' style={{ height: '98%' }}>
+				<View className='pb-7 pt-4'>
+					{data.map((item, index) => (
+						<View key={index} style={{ gap: 5 }}>
+							<TextSmallGray text={item.date} />
+							<ScheduleCard data={item} />
+						</View>
+					))}
+				</View>
 			</ScrollView>
 		</SafeAreaView>
 	)

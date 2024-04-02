@@ -15,7 +15,7 @@ export default function SNotifications({ navigation, route }) {
 		setSelectedOption(option)
 	}
 	return (
-			<SafeAreaView className='flex-1 items-center'>
+			<SafeAreaView className='flex-1 items-center pt-2'>
 				<HeaderGoBack navigation={navigation} pageName={'Уведомлений'} />
 				<ScrollView style={styles.scrollContainer}>
 					{list.length > 0 ? (

@@ -8,6 +8,7 @@ const colors = {
     opacityWhiteV2: '#ECECEC',
     linkColor: '#0B4AA9',
     opacityGray: '#AEAEAE',
-    SmallText: '#848484'
+    SmallText: '#848484',
+    trainerBGColor: '#D9D9D9'
 }
 export default colors

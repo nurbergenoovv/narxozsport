@@ -3,9 +3,9 @@ import { StyleSheet, View } from 'react-native'
 import TextMedium from './TextMedium'
 import TextSmallGray from './TextSmallGray'
 
-export default function LabelAndText({ label, text }) {
+export default function LabelAndText({ label, text, gap }) {
 	return (
-		<View style={{gap:-4}}>
+		<View style={{gap:gap}}>
 			<TextSmallGray text={label} />
 			<TextMedium text={text}/>
 		</View>

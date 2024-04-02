@@ -11,6 +11,8 @@ import SNotifications from './app/route/Notifications/SNotifications'
 import SSchedules from './app/route/Schedules/SSchedules'
 import SSetting from './app/route/Setting/SSetting'
 import TabNavigator from './TabNavigator'
+import SAboutSection from './app/route/AboutSection/SAboutSection'
+import STrainerProfile from './app/route/TrainerProfile/STrainerProfile'
 const Stack = createNativeStackNavigator()
 
 export default function Navigator() {
@@ -30,6 +32,7 @@ export default function Navigator() {
 									<Stack.Screen name='AcademyCalendar' component={SAcademyCalendar} />
 									<Stack.Screen name='Schedules' component={SSchedules} />
 									<Stack.Screen name='ListSchedules' component={SListSchedules} />
+									<Stack.Screen name='AboutSection' component={SAboutSection} /><Stack.Screen name='TrainerProfile' component={STrainerProfile} />
 									
 								</>
 							) : (
