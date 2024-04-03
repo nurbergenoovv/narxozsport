@@ -1,5 +1,8 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { useAuth } from '../../Hooks/useAuth'
+import User from '../../services/User'
 import GreenButton from '../Buttons/GreenButton'
 import BlueLinkText from '../Link/BlueLinkText'
 import ConfirmPasswordInput from './UI/ConfirmPasswordInput'
@@ -10,6 +13,8 @@ import PhoneNumberInput from './UI/PhoneNumberInput'
 import TextInputCustom from './UI/TextInputCustom'
 
 export default function RegisterForm({ navigation }) {
+	const { setIsAuth} = useAuth()
+    const [error, setError] = useState('')
 	const [FormData, setFormData] = useState({
 		email: '',
 		password: '',
@@ -42,6 +47,24 @@ export default function RegisterForm({ navigation }) {
 	}
 	const SignInLinkHandler = () => {
 		navigation.goBack()
+	}
+
+	const handleRegister = async () =>{
+		console.log(FormData)
+		try {
+            const response = await User.register(FormData);
+            if (response.status === 200 && response.data.status === 'success') {
+                AsyncStorage.setItem('token', response.data.token)
+				setIsAuth(true)
+				console.log(response.data.message)
+            } else {
+				console.error(response.data.message)
+                setError(response.data.message || 'Неправильный email или пароль');
+            }
+        } catch (error) {
+            console.error('Произошла ошибка при входе:', error);
+            setError('Произошла ошибка при входе. Пожалуйста, попробуйте еще раз.');
+        }
 	}
 	return (
 		<View className='bg-white p-5 rounded-xl' style={styles.container}>
@@ -76,7 +99,8 @@ export default function RegisterForm({ navigation }) {
 					ConfirmPassword={FormData.confirmPassword}
 					onChangeConfirmPassword={confirmPasswordChangeHandler}
 				/>
-				<GreenButton text={'Регистрация'} onPress={() => {}} />
+				{error ? <Text style={styles.errorText}>{error}</Text> : <></>}
+				<GreenButton text={'Регистрация'} onPress={handleRegister} />
 				<BlueLinkText
 					align={'center'}
 					text={'Есть аккаунт ? Войти '}

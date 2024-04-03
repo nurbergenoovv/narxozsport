@@ -1,0 +1,1 @@
+export const base_url = 'https://aidarov-museum.kz/api/mobile'

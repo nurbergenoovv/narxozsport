@@ -3,9 +3,9 @@ import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import colors from '../../const/colors'
 
-const Dropdown = ({ options, onSelect }) => {
+const Dropdown = ({ options, onSelect, sOption }) => {
 	const [isVisible, setIsVisible] = useState(false)
-	const [selectedOption, setSelectedOption] = useState(options[1])
+	const [selectedOption, setSelectedOption] = useState(sOption)
 
 	const toggleModal = () => {
 		setIsVisible(!isVisible)
@@ -20,13 +20,13 @@ const Dropdown = ({ options, onSelect }) => {
 	return (
 		<View style={styles.container}>
 			<TouchableOpacity style={styles.button} onPress={toggleModal}>
-				<Text className="text-sm font-semibold">{selectedOption}</Text>
-        <MaterialCommunityIcons
-				name={'chevron-right'}
-				size={24}
-				color={colors.primary}
-				style={styles.pencil}
-			/>
+				<Text className='text-sm font-semibold'>{selectedOption}</Text>
+				<MaterialCommunityIcons
+					name={'chevron-right'}
+					size={24}
+					color={colors.primary}
+					style={styles.pencil}
+				/>
 			</TouchableOpacity>
 			<Modal
 				visible={isVisible}
@@ -42,7 +42,9 @@ const Dropdown = ({ options, onSelect }) => {
 								style={styles.option}
 								onPress={() => handleSelectOption(option)}
 							>
-								<Text className="text-lg font-semibold text-center">{option}</Text>
+								<Text className='text-lg font-semibold text-center'>
+									{option}
+								</Text>
 							</TouchableOpacity>
 						))}
 					</View>
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
 	container: {
 		alignItems: 'center',
 		justifyContent: 'center',
-    width:'100%'
+		width: '100%',
 	},
 	button: {
 		width: '100%',
@@ -90,12 +92,12 @@ const styles = StyleSheet.create({
 		padding: 20,
 		borderRadius: 10,
 		elevation: 5,
-    gap:5
+		gap: 5,
 	},
 	option: {
 		paddingVertical: 10,
-    backgroundColor:colors.opacityWhiteV2,
-    borderRadius: 8,
+		backgroundColor: colors.opacityWhiteV2,
+		borderRadius: 8,
 	},
 })
 

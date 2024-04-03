@@ -3,7 +3,11 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import colors from '../../const/colors'
 
-export default function HeaderGoBack({ navigation, pageName }) {
+export default function HeaderGoBack({
+	navigation,
+	pageName,
+	background = 'white',
+}) {
 	const onPress = () => {
 		navigation.goBack('Setting')
 	}
@@ -16,11 +20,17 @@ export default function HeaderGoBack({ navigation, pageName }) {
 				<MaterialCommunityIcons
 					name={'chevron-left'}
 					size={36}
-					color={colors.primary}
-					style={styles.pencil}
+					color={background == 'red' ? colors.opacityWhiteV1 : colors.primary}
 				/>
 			</TouchableOpacity>
-			<Text className='text-center text-base font-semibold'>{pageName}</Text>
+			<Text
+				className='text-center text-base font-semibold'
+				style={{
+					color: background == 'red' ? colors.opacityWhiteV1 : colors.black,
+				}}
+			>
+				{pageName}
+			</Text>
 		</View>
 	)
 }

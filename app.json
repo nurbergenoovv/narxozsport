@@ -14,16 +14,26 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nurbergenovv.narxozsport"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/NarxozSport.png",
         "backgroundColor": "#CC0836"
-      }
+      },
+      "package": "com.nurbergenovv.narxozsport"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission":"Allow to access your photos"	
+        }
+      ]
+    ]
   }
 }

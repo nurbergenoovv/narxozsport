@@ -9,15 +9,15 @@ import styles from './HomeStyle'
 
 export default function SHome({ navigation }) {
 	const [list, setList] = useState([
-		// {
-		// 	id:1,
-		// 	title:"You have first notify",
-		// 	description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quibusdam."
-		// },
+		{
+			id:1,
+			title:"You have first notify",
+			description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quibusdam."
+		},
 		// {
 		// 	id:2,
 		// 	title:"You have second notify",
-		// 	description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quibusdam."
+		// 	description:"Lorem ipsum dolor sit amet, consectetur adipisicing"
 		// }
 	])
 	const [news, setNews] = useState([
