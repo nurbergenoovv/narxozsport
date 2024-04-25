@@ -2,10 +2,14 @@ import React from 'react'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import colors from '../../../const/colors'
 
-export default function PasswordInput({onChangePassword, Password}) {
+export default function PasswordInput({
+	onChangePassword,
+	Password,
+	text = 'Пароль',
+}) {
 	return (
 		<View className='rounded-lg' style={styles.container}>
-			<Text className="text-sm">Пароль:</Text>
+			<Text className='text-sm'>{text}:</Text>
 			<TextInput
 				editable
 				numberOfLines={4}
@@ -29,8 +33,8 @@ const styles = StyleSheet.create({
 		width: '100%',
 		padding: 10,
 	},
-	input:{
-		fontSize:20,
-		height: 30
-	}
+	input: {
+		fontSize: 20,
+		height: 30,
+	},
 })

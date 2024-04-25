@@ -3,14 +3,14 @@
 <plist version="1.0">
   <dict>
     <key>CADisableMinimumFrameDurationOnPhone</key>
-    <true />
+    <true/>
     <key>CFBundleDevelopmentRegion</key>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
     <key>CFBundleDisplayName</key>
     <string>SportApp</string>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
-    <key><CFBundleId></CFBundleId>entifier</key>
+    <key>CFBundleIdentifier</key>
     <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
@@ -22,8 +22,6 @@
     <string>1.0.0</string>
     <key>CFBundleSignature</key>
     <string>????</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Для загрузки аватарки</string>
     <key>CFBundleURLTypes</key>
     <array>
       <dict>
@@ -36,14 +34,20 @@
     <key>CFBundleVersion</key>
     <string>1</string>
     <key>LSRequiresIPhoneOS</key>
-    <true />
+    <true/>
     <key>NSAppTransportSecurity</key>
     <dict>
       <key>NSAllowsArbitraryLoads</key>
-      <false />
+      <false/>
       <key>NSAllowsLocalNetworking</key>
-      <true />
+      <true/>
     </dict>
+    <key>NSCameraUsageDescription</key>
+    <string>Allow $(PRODUCT_NAME) to access your camera</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Allow $(PRODUCT_NAME) to access your microphone</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Allow to access your photos</string>
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>
     <key>UIRequiredDeviceCapabilities</key>
@@ -51,9 +55,9 @@
       <string>armv7</string>
     </array>
     <key>UIRequiresFullScreen</key>
-    <false />
+    <false/>
     <key>UIStatusBarStyle</key>
-    <string>UIStatusBarStyleDefault</string>
+    <string/>
     <key>UISupportedInterfaceOrientations</key>
     <array>
       <string>UIInterfaceOrientationPortrait</string>
@@ -69,6 +73,6 @@
     <key>UIUserInterfaceStyle</key>
     <string>Light</string>
     <key>UIViewControllerBasedStatusBarAppearance</key>
-    <false />
+    <false/>
   </dict>
 </plist>

@@ -1,1 +1,1 @@
-export const base_url = 'https://aidarov-museum.kz/api/mobile'
+export const base_url = 'https://myapi.kz/api/mobile'

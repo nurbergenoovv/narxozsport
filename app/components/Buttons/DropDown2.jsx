@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
 import {
-  FlatList,
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+	FlatList,
+	Modal,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	View,
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import colors from '../../const/colors'
@@ -84,11 +84,11 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.trainerBGColor,
 		height: 50,
 		zIndex: 1,
-    borderRadius:12
+		borderRadius: 12,
+		paddingHorizontal: 20,
 	},
 	buttonText: {
 		flex: 1,
-    paddingHorizontal:20
 	},
 	icon: {
 		marginRight: 10,

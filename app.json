@@ -1,14 +1,14 @@
 {
   "expo": {
     "name": "SportApp",
-    "slug": "SportApp",
+    "slug": "sportapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/NarxozSport.png",
     "userInterfaceStyle": "light",
     "splash": {
       "resizeMode": "contain",
-      "backgroundColor": "#CC0836"
+      "backgroundColor": "#E10303"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,9 +20,13 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/NarxozSport.png",
-        "backgroundColor": "#CC0836"
+        "backgroundColor": "#E10303"
       },
-      "package": "com.nurbergenovv.narxozsport"
+      "package": "com.nurbergenovv.narxozsport",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "googleServicesFile": "./android/app/google-services.json"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,9 +35,15 @@
       [
         "expo-image-picker",
         {
-          "photosPermission":"Allow to access your photos"	
+          "photosPermission": "Allow to access your photos"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "e04d135b-fb5c-484c-bfa0-26208de6aa8d"
+      }
+    },
+    "owner": "nurbergenovv"
   }
 }

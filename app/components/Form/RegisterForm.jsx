@@ -54,7 +54,8 @@ export default function RegisterForm({ navigation }) {
 		try {
             const response = await User.register(FormData);
             if (response.status === 200 && response.data.status === 'success') {
-                AsyncStorage.setItem('token', response.data.token)
+                await AsyncStorage.setItem('token', response.data.token)
+                await AsyncStorage.setItem('id', response.data.id)
 				setIsAuth(true)
 				console.log(response.data.message)
             } else {

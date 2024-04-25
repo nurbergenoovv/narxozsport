@@ -11,6 +11,7 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import HeaderGoBack from '../../components/Header/HeaderGoBack'
 import colors from '../../const/colors'
+import User from '../../services/User'
 import styles from './OTPStyle'
 
 export default function SVerification({ navigation, route }) {
@@ -65,14 +66,9 @@ export default function SVerification({ navigation, route }) {
 
 	const handleSubmit = () => {
 		const enteredOtp = otp.join('')
-		const randomNumber = Math.floor(1000 + Math.random() * 9000) // Simulate generating a random code
 		if (enteredOtp.length === 4) {
 			if (code === enteredOtp) {
-				Alert.alert(
-					'Verification successful',
-					'Verification successful message'
-				)
-				navigation.goBack()
+				verifyDone()
 			} else {
 				Alert.alert('Error', 'Incorrect Verification Code')
 			}
@@ -93,6 +89,35 @@ export default function SVerification({ navigation, route }) {
 			handleSubmit()
 		}
 	}, [otp])
+
+	useEffect(() => {
+		request()
+	}, [])
+
+	const request = async () => {
+		try {
+			const response = await User.verification(email)
+			if (response.status === 'success') {
+				setCode(`${response.code}`)
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
+	const verifyDone = async () => {
+		try {
+			const response = await User.verification_done(email)
+			if (response.status === 'success') {
+				Alert.alert(
+					'Verification successful',
+					'Verification successful message'
+				)
+				navigation.goBack()
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: colors.primary }}>

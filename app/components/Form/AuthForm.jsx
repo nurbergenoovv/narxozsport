@@ -8,7 +8,7 @@ import BlueLinkText from '../Link/BlueLinkText'
 import EmailInput from './UI/EmailInput'
 import PasswordInput from './UI/PasswordInput'
 
-export default function AuthForm({ navigation }) {
+export default function AuthForm({ navigation, setIsLoading }) {
     const { isAuth, setIsAuth } = useAuth()
 
     const [FormData, setFormData] = useState({
@@ -30,12 +30,15 @@ export default function AuthForm({ navigation }) {
         navigation.push('SignUp')
     }
 
-	const handleSignIn = async () => {
+    const handleSignIn = async () => {
         try {
+            setIsLoading(true)
             const response = await User.login(FormData);
+            setIsLoading(false)
             if (response.status === 200 && response.data.status === 'success') {
                 AsyncStorage.setItem('token', response.data.token)
-				setIsAuth(true)
+                AsyncStorage.setItem('id', response.data.id)
+                setIsAuth(true)
             } else {
                 setError(response.data.message || 'Неправильный email или пароль');
             }
@@ -44,7 +47,7 @@ export default function AuthForm({ navigation }) {
             setError('Произошла ошибка при входе. Пожалуйста, попробуйте еще раз.');
         }
     }
-	
+
     const ForgetPasswordLinkHandler = () => {
         navigation.push('ForgetPassword', { email: FormData.email })
     }
@@ -58,7 +61,7 @@ export default function AuthForm({ navigation }) {
                     Password={FormData.password}
                     onChangePassword={passwordChangeHandler}
                 />
-                {error ? <Text style={styles.errorText}>{error}</Text> : null}
+                {error ? <Text style={styles.errorText}>{error}</Text> : <Text style={styles.errorText}> </Text>}
                 <BlueLinkText
                     align={'right'}
                     text={'Забыли пароль?'}

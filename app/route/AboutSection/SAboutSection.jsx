@@ -1,5 +1,12 @@
-import React from 'react'
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import {
+	ActivityIndicator,
+	Alert,
+	ScrollView,
+	Text,
+	TouchableOpacity,
+	View,
+} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import RedButton from '../../components/Buttons/RedButton'
@@ -9,11 +16,117 @@ import HeaderGoBack from '../../components/Header/HeaderGoBack'
 import LabelAndText from '../../components/TextPlace/LabelAndText'
 import TextSmallGray from '../../components/TextPlace/TextSmallGray'
 import colors from '../../const/colors'
+import Sections from '../../services/Sections'
 
 export default function SAboutSection({ navigation, route }) {
+	const [isLoading, setIsLoading] = useState(false)
 	const { data } = route.params
+	const [subscribed, setSubscribed] = useState(data.subscribed)
+	const [application, setApplication] = useState(false)
+
+	useEffect(() => {
+		console.log(data)
+	}, [])
+
+	const sendApplication = async () => {
+		Alert.alert('Отправка заявки', 'Пожалуйста, подтвердите ваше действие', [
+			{
+				text: 'Назад',
+				onPress: () => console.log('Cancel Pressed'),
+				style: 'cancel',
+			},
+			{
+				text: 'Подтверждаю',
+				onPress: async () => {
+					try {
+						setIsLoading(true)
+						const response = await Sections.subscribeToSection(data.section_id)
+						setIsLoading(false)
+						console.log(response)
+						if (response.status === 'success') {
+							Alert.alert(
+								'Успешно',
+								'Вы успешно отправили заявку на бронь, ждите ответа тренера'
+							)
+							setApplication(true)
+						} else {
+							Alert.alert('Ошибка', response.message)
+						}gi
+					} catch (e) {}
+				},
+			},
+		])
+	}
+
+	const subscribeSection = async () => {
+		Alert.alert('Бронирование', 'Пожалуйста, подтвердите ваше бронирование', [
+			{
+				text: 'Назад',
+				onPress: () => console.log('Cancel Pressed'),
+				style: 'cancel',
+			},
+			{
+				text: 'Подтверждаю',
+				onPress: async () => {
+					try {
+						setIsLoading(true)
+						const response = await Sections.subscribeToSection(data.section_id)
+						setIsLoading(false)
+						console.log(response)
+						if (response.status === 'success') {
+							Alert.alert('Успешно', 'Вы успешно бронировали место')
+							setSubscribed(true)
+						} else {
+							Alert.alert('Ошибка', response.message)
+						}
+					} catch (e) {}
+				},
+			},
+		])
+	}
+
+	const unSubscribeSection = async () => {
+		Alert.alert(
+			'Отмена бронирования',
+			'Пожалуйста, подтвердите ваше отмену бронирования',
+			[
+				{
+					text: 'Назад',
+					onPress: () => console.log('Cancel Pressed'),
+					style: 'cancel',
+				},
+				{
+					text: 'Подтверждаю',
+					onPress: async () => {
+						try {
+							setIsLoading(true)
+							const response = await Sections.unsubscribeSection(
+								data.section_id
+							)
+							setIsLoading(false)
+							console.log(response)
+							if (response.status === 'success') {
+								Alert.alert('Успешно', 'Бронирование отменено')
+								setSubscribed(false)
+							} else {
+								Alert.alert('Ошибка', response.message)
+							}
+						} catch (e) {}
+					},
+				},
+			]
+		)
+	}
+
 	return (
 		<SafeAreaView className=''>
+			{isLoading && (
+				<ActivityIndicator
+					size='large'
+					color={colors.primary}
+					style={{ position: 'absolute', zIndex: 1, top: '60%', width: '100%' }}
+				/>
+			)}
 			<HeaderGoBack
 				pageName={'Подробная информация о секции'}
 				navigation={navigation}
@@ -23,44 +136,47 @@ export default function SAboutSection({ navigation, route }) {
 					className='p-5 '
 					style={{ width: '100%', height: '98%', gap: 13 }}
 				>
-					<Text className='text-2xl font-semibold mb-3'>{data.name}</Text>
-					<LabelAndText text={'Свободных мест: 25'} label={'Места'} gap={8} />
+					<Text className='text-2xl font-semibold mb-3'>
+						{data.section_info.name}
+					</Text>
 					<LabelAndText
-						text={
-							'В тренажерном зале Вы можете тренироваться как самостоятельно, так и персонально с инструктором. Персональная тренировка –  это индивидуальный подход, безопасные тренировки и скорейшее достижение своих целей.'
-						}
+						text={`Свободных мест: ${data.quantity - data.busy}`}
+						label={'Места'}
+						gap={8}
+					/>
+					<LabelAndText
+						text={data.section_info.description}
 						label={'Описание'}
 						gap={8}
 					/>
 					<TextSmallGray text={'Расписание'} />
-					<View className='flex-row justify-between'>
-						<Text className='font-medium text-lg'>{data.date}</Text>
-						<Text className='font-medium text-lg'>{data.time}</Text>
-					</View>
-					<View className='flex-row justify-between'>
-						<Text className='font-medium text-lg'>{data.date}</Text>
-						<Text className='font-medium text-lg'>{data.time}</Text>
-					</View>
+					{data.training_days_and_times.map((training_day, index) => (
+						<View className='flex-row justify-between' key={index}>
+							<Text className='font-medium text-lg'>{training_day.day}</Text>
+							<Text className='font-medium text-lg'>{`${training_day.start} - ${training_day.end}`}</Text>
+						</View>
+					))}
+
 					<TextSmallGray text={'Информация о тренере'} />
 					<TouchableOpacity
 						className='flex-row gap-1 p-[10px] rounded-xl items-center justify-between'
 						style={{ backgroundColor: colors.trainerBGColor }}
 						onPress={() => {
-							navigation.push('TrainerProfile', { name: data.trainer })
+							navigation.push('TrainerProfile', { data: data.trainer_info })
 						}}
 					>
 						<View className='flex-row items-center' style={{ gap: 10 }}>
 							<UserAvatar
-								link={'https://clickme.kz/photo.png'}
+								link={data.trainer_info.profile_photo}
 								height={48}
 								width={48}
 								borderWidth={2}
 								padding={1}
 							/>
 							<View>
-								<Text className='font-semibold text-base'>{data.trainer}</Text>
+								<Text className='font-semibold text-base'>{`${data.trainer_info.last_name} ${data.trainer_info.first_name}`}</Text>
 								<Text style={{ color: colors.primary }}>
-									Инструктор тренажерного зала
+									{data.trainer_info.position}
 								</Text>
 							</View>
 						</View>
@@ -70,7 +186,18 @@ export default function SAboutSection({ navigation, route }) {
 							color={colors.primary}
 						/>
 					</TouchableOpacity>
-					<RedButton text={'Забронировать'} onPress={() => console.log(123)} />
+
+					{data.section_info.type_section === 0 ? (
+						<RedButton
+							text={subscribed ? 'Отменить бронь' : 'Забронировать'}
+							onPress={subscribed ? unSubscribeSection : subscribeSection}
+						/>
+					) : (
+						<RedButton
+							text={subscribed ? 'Отменить бронь' :application ?  'Отправить заявку на бронь' : 'Отправить заявку на бронь'}
+							onPress={subscribed ? unSubscribeSection : sendApplication}
+						/>
+					)}
 
 					<TextSmallGray text={'Отзывы о занятии'} className={'mt-2'} />
 					<View
@@ -79,17 +206,10 @@ export default function SAboutSection({ navigation, route }) {
 						style={{ gap: 10 }}
 					>
 						<ReviewCard
-							name={'Nurbergen Ibrakhim'}
-							reviewText={'Lorem ipsum dolor sit amet consectetur'}
+							name={'Имя пользователя'}
+							reviewText={'Текст отзыв о секцийтекст отзыв о секций'}
 						/>
-						<ReviewCard
-							name={'Nurbergen Ibrakhim'}
-							reviewText={'Lorem ipsum dolor sit amet consectetur'}
-						/>
-						<ReviewCard
-							name={'Nurbergen Ibrakhim'}
-							reviewText={'Lorem ipsum dolor sit amet consectetur'}
-						/>
+						
 					</View>
 				</View>
 			</ScrollView>

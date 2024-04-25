@@ -5,9 +5,7 @@ import HeaderGoBack from '../../components/Header/HeaderGoBack'
 
 const SUserEdit = ({ navigation, route }) => {
 	const { data } = route.params
-	const goBack = () => {
-		navigation.goBack()
-	}
+	
 	return (
 		<SafeAreaView className='mt-2'>
 			<HeaderGoBack
@@ -15,7 +13,7 @@ const SUserEdit = ({ navigation, route }) => {
 				navigation={navigation}
 			/>
 			<ScrollView>
-				<UserEdit data={data} goBack={goBack}/>
+				<UserEdit data={data} navigation={navigation}/>
 			</ScrollView>
 		</SafeAreaView>
 	)

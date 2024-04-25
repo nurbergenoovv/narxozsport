@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import LabelAndText from '../TextPlace/LabelAndText'
 import UserAvatar from './UserAvatar'
 
-export default function ProfileUserCard({ data }) {
-	useEffect(() => {
-		console.log(data)
-	})
+export default function ProfileUserCard({ data}) {
+
 	return (
 		<View>
 			<View className='justify-center items-center gap-3 mt-8'>
@@ -31,7 +29,7 @@ export default function ProfileUserCard({ data }) {
 				/>
 				<LabelAndText
 					label={'Тип секций'}
-					text={data.type_section ? 'ЛФК' : 'вне ЛФК'}
+					text={data.type_section ? 'ЛФК' : 'Обычный'}
 					gap={-4}
 				/>
 			</View>
