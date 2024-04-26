@@ -130,7 +130,7 @@ export default function UserEdit({ navigation, data }) {
 	}, [selectedOption])
 
 	return (
-		<View className='p-5 rounded-xl' style={styles.container}>
+		<View className='p-5 rounded-xl px-6' style={styles.container}>
 			{isLoading && (
 				<ActivityIndicator
 					size='large'
@@ -158,10 +158,10 @@ export default function UserEdit({ navigation, data }) {
 							zIndex: 3,
 							bottom: -5,
 							right: -5,
-							padding:4,
+							padding: 4,
 							backgroundColor: 'white',
 						}}
-						className="rounded-full"
+						className='rounded-full'
 					>
 						<MaterialCommunityIcons
 							name={'image-edit-outline'}
@@ -206,8 +206,11 @@ export default function UserEdit({ navigation, data }) {
 				/>
 				<EmailInput Email={formData.email} onChangeEmail={emailChangeHandler} />
 				<View
-					className='p-2 rounded-lg pb-3'
-					style={{ backgroundColor: colors.opacityWhiteV1, gap: 10 }}
+					style={{ 
+						backgroundColor: colors.opacityWhiteV1, 
+						gap: 10 
+					}}
+					className='p-2 rounded-lg pb-3 w-[100%]'
 				>
 					<TextMedium text={'Тип секций:'} />
 					<Dropdown
@@ -220,6 +223,7 @@ export default function UserEdit({ navigation, data }) {
 					text={'Изменить'}
 					onPress={handleButtonChange}
 					isLoading={isLoading}
+					
 				/>
 			</View>
 		</View>

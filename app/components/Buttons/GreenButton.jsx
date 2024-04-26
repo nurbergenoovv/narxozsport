@@ -5,6 +5,7 @@ import colors from '../../const/colors'
 export default function GreenButton({ text, onPress, isLoading = false }) {
 	return (
 		<TouchableOpacity
+			disabled={isLoading}
 			className='justify-center items-center py-3 rounded-lg'
 			style={[
 				styles.container,

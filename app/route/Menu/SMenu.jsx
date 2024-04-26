@@ -33,13 +33,13 @@ export default function SMenu({ navigation }) {
 					style={{ position: 'absolute', top: '50%', left: '50%', zIndex: 1 }}
 				/>
 			)}
-			<View>
+			<View className="px-3">
 				<HeaderMenuScreen />
 				<View style={styles.container}>
 					{data.role == 'Student' ? (
 						<View
 							style={styles.WhiteContainer}
-							className='bg-white d-flex flex-row justify-between'
+							className='bg-white d-flex flex-row justify-around min-w-full items-start'
 						>
 							<MenuButton
 								text={'Академический календарь'}
@@ -66,7 +66,7 @@ export default function SMenu({ navigation }) {
 					) : (
 						<View
 							style={styles.WhiteContainer}
-							className='bg-white d-flex flex-row justify-evenly min-w-full items-start'
+							className='bg-white d-flex flex-row justify-evenly min-w-full items-start w-full'
 						>
 							<MenuButton
 								text={'Мое\nрасписания'}

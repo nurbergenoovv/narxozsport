@@ -10,7 +10,6 @@ import User from './app/services/User'
 
 export default function App() {
 	const { expoPushToken, notification } = usePushNotifications()
-	const data = JSON.stringify(notification, undefined, 2)
 
 	const [isSplash, setIsSplash] = useState(true)
 	const [isAuth, setIsAuth] = useState(false)
@@ -45,8 +44,6 @@ export default function App() {
 	}
 
 	useEffect(() => {
-		console.log(`DATA: ${data}`)
-		console.log(`PUSH Token: ${expoPushToken?.data ?? ''}`)
 		const initializeApp = async () => {
 			const connection = await Server.check_connection()
 			if (connection) {
