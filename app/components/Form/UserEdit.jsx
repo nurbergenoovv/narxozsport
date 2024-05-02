@@ -47,6 +47,7 @@ export default function UserEdit({ navigation, data }) {
 				mediaTypes: ImagePicker.MediaTypeOptions.Images,
 				allowsEditing: true,
 				quality: 1,
+				aspectRatio: [1, 1]
 			})
 
 			if (!result.canceled) {
