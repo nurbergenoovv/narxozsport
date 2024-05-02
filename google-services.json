@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "993907803333",
+    "project_id": "sportapp-49d78",
+    "storage_bucket": "sportapp-49d78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993907803333:android:9a57be0df1bec1aba0dcac",
+        "android_client_info": {
+          "package_name": "com.nurbergenovv.narxozsport"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAneRgcO9EFYEXjbVCMjrp9tH-fXcZO00g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

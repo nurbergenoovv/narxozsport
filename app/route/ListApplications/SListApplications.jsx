@@ -7,6 +7,7 @@ import {
 	Text,
 	TouchableOpacity,
 	View,
+	RefreshControl
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import UserAvatar from '../../components/CardComponents/UserAvatar'
@@ -18,19 +19,26 @@ import Sections from '../../services/Sections'
 export default function SListApplications({ navigation }) {
 	const [isLoading, setIsLoading] = useState(false)
 	const [data, setData] = useState([])
+	const [isRefreshing, setIsRefreshing] = useState(false); // State for refreshing
 
+	const fetchApplications = async () => {
+		try {
+			setIsLoading(true)
+			const response = await Sections.fetchApplications()
+			setIsLoading(false)
+			if (response.status == 'success') {
+				setData(response.application)
+			}
+		} catch (e) {}
+	}
+
+	const onRefresh = () => {
+		setIsRefreshing(true); // Set refreshing state to true
+		fetchApplications(); // Fetch user information
+		setIsRefreshing(false); // Set refreshing state back to false when done
+	};
 	useFocusEffect(
 		useCallback(() => {
-			const fetchApplications = async () => {
-				try {
-					setIsLoading(true)
-					const response = await Sections.fetchApplications()
-					setIsLoading(false)
-					if (response.status == 'success') {
-						setData(response.application)
-					}
-				} catch (e) {}
-			}
 			fetchApplications()
 		}, [navigation])
 	)
@@ -44,7 +52,9 @@ export default function SListApplications({ navigation }) {
 				/>
 			)}
 			<HeaderGoBack pageName={'Заявки на бронь'} navigation={navigation} />
-			<ScrollView className='w-full mt-2 px-5' style={{ height: '98%' }}>
+			<ScrollView className='w-full mt-2 px-5' style={{ height: '98%' }} refreshControl={
+					<RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
+				}>
 				<View className='pb-7 pt-4'>
 					<View className='bg-white p-3 rounded-md'>
 						<TextSmallGray text={'Список заявок'} />

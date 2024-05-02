@@ -72,6 +72,7 @@ class Section {
             })
             return response.data
 		} catch (e) {
+			console.log(JSON.stringify(e))
 			console.error('Ошибка при получении тренера секций сервера:', e)
 			throw e
 		}

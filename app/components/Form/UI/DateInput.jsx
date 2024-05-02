@@ -13,7 +13,7 @@ export default function DateInput({onChangeDate, date}) {
                 options={{
                     format: 'MM-DD-YYYY',
                 }}
-                placeholder="MM-DD-YYYY"
+                placeholder="DD-MM-YYYY"
                 value={date}
                 onChangeText={onChangeDate}
                 keyboardType="numeric"

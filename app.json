@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Narxoz Sport",
-    "slug": "narxozapp-c6y5eb-5xacub5svcm0no",
+    "slug": "narxozapp-fc-vfqfz8xr1lnvfqqzj",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/NarxozSport.png",
@@ -25,7 +25,8 @@
       "package": "com.nurbergenovv.narxozsport",
       "permissions": [
         "android.permission.RECORD_AUDIO"
-      ]
+      ],
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -40,7 +41,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "3c73e3ef-b22a-45ea-a1d3-330f96fe40dd"
+        "projectId": "8d9c7512-b591-4e41-8111-dd9f7455c402"
       }
     },
     "owner": "nurbergenovv"
